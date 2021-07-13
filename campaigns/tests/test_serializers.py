@@ -1,7 +1,7 @@
 import pytest
 from collections import OrderedDict
 
-from campaigns import constants
+from campaigns import utils
 from campaigns.models import Campaign, Hashtag, Team
 from campaigns.serializers.campaigns import CampaignSerializer
 from campaigns.serializers.hashtags import HashtagSerializer
@@ -36,8 +36,8 @@ def test_campaign_serializer(campaign_data: Campaign):
     assert serialized_data == {
         'id': campaign_data.id,
         'budget': f'${campaign_data.budget:,.2f}',
-        'start_date': campaign_data.start_date.strftime(constants.DATE_TIME_FORMAT),
-        'end_date': campaign_data.start_date.strftime(constants.DATE_TIME_FORMAT),
+        'start_date': utils.format_date_to_str(campaign_data.start_date),
+        'end_date': utils.format_date_to_str(campaign_data.start_date),
         'hashtags': [
             OrderedDict({'id': campaign_data_hashtags[0].id,
                          'name': campaign_data_hashtags[0].name})
