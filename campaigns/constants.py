@@ -1,0 +1,3 @@
+
+DEFAULT_BATCH_SIZE = 500
+DATE_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
